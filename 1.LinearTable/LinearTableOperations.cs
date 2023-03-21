@@ -62,34 +62,51 @@ namespace _1.LinearTable
             }
             return linearTableTemporary;
         }
-        public static void ShowMinValue(int[] linearTableInput)
+        public static int GetMinValueInLinearTable(int[] linearTableInput)
         {
-            Console.WriteLine("\nShowing the Min Value in Linear Table\n");
-
-            int minIndex = 0;
+            Console.WriteLine("\nCatching the Min Value in Linear Table\n");
+            int minIndex = 0;            
             for (int j = 1; j < linearTableInput.Length; j++)
             {
                 if (linearTableInput[minIndex] > linearTableInput[j])
                     minIndex = j;
             }
-            Console.WriteLine("[" + minIndex + "] = " + linearTableInput[minIndex]);
+            return linearTableInput[minIndex]);
 
         }
-        public static void ShowIndexByValue(int[] linearTableInput, int value) 
+        public static int GetIndexByValue(int[] linearTableInput, int value) 
         {
-            Console.WriteLine("\nSearching Index by Value in Linear Table\n");
+            Console.WriteLine("\nCatching Index by Value in Linear Table\n");
             bool isSearch = false;
+            var result = -1;
             for (int i = 0; i < linearTableInput.Length; i++) 
             {
                 if (linearTableInput[i] == value) 
                 {
-                    isSearch = true;
-                    Console.WriteLine("Found -> [" + i + "] = " + value);
+                    isSearch = true;                    
+                    result =  i;
                     break;
                 }
             }
             if (!isSearch)
-                Console.WriteLine("The value "+value+" was not found.");
+                result = -1;
+            return result;
+        }
+        public static int GetIndexByValueWhithBinarySearch(int[] linearTableInput, int value)
+        {
+            Console.WriteLine("\nCatching Index by Value in Linear Table with Binary Search\n");
+            int minor = 0, half = 0, major = linearTableInput.Length - 1;
+            while (minor <= major)
+            {
+                half = (minor + major) / 2;
+                if (linearTableInput[half] == value)
+                    return half;
+                else if (linearTableInput[half] < value)
+                    minor = half + 1;
+                else if (linearTableInput[half] > value)
+                    minor = half - 1;
+            }
+            return -1;
         }
         public static void BubbleSorting(int[] linearTableInput) 
         {
@@ -171,5 +188,7 @@ namespace _1.LinearTable
                 linearTableInput[lenght - i - 1] = temp;
             }
         }
+        
+        
     }
 }
