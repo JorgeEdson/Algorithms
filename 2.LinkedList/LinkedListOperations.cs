@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _2.LinkedList
+﻿namespace _2.LinkedList
 {
     static class LinkedListOperations
     {
@@ -25,7 +19,6 @@ namespace _2.LinkedList
 
             return head;
         }
-
         public static void ShowLinkedList(Node paramNode) 
         {
             var auxNode = paramNode;
@@ -36,7 +29,6 @@ namespace _2.LinkedList
             }
             Console.WriteLine("End LikedList");
         }
-
         public static void AddNode(Node paramNode) 
         {
             tail.Next = paramNode;
